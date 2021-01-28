@@ -12,9 +12,8 @@ router.get('/create', (req,res) => {
 })
 
 /* GET update page. */
-router.get('/update', (res,req) => {
-  console.log(res)
-  req.render('update', {title: 'CRUD'})
+router.get('/update', (req,res) => {
+  res.render('update', {title: 'CRUD'})
 })
 
 module.exports = router;
