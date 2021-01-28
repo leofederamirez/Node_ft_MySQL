@@ -16,7 +16,12 @@ router.get('/update', (req,res) => {
   res.render('update', {title: 'CRUD', legend: 'Actualizar Registro', label: 'Id', button: 'Actualizar'})
 })
  /* GET delete page.*/
- router.get('/delete', (req,res) => {
+router.get('/delete', (req,res) => {
    res.render('delete', {title: 'CRUD', legend: 'Eliminar Registro', label: 'Id', button: 'Eliminar'})
- })
+})
+/*POST select pag*/
+router.post('/select',(req,res) => {
+  console.log(req.body.id)
+  res.redirect('/')
+})
 module.exports = router;
