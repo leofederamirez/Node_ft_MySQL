@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var db = require('../db/db')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -21,7 +22,11 @@ router.get('/delete', (req,res) => {
 })
 /*POST select pag*/
 router.post('/select',(req,res) => {
-  console.log(req.body.id)
-  res.redirect('/')
+  let id = req.body.id
+  db.query(`select * from cliente where id = ${id};`,(err,rows) => {
+    if(err) throw err;
+    console.log(rows);
+    res.render('read', {rows: rows, title: 'CRUD'})
+  });
 })
 module.exports = router;
