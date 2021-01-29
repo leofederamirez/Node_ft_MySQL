@@ -20,7 +20,7 @@ router.get('/update', (req,res) => {
 router.get('/delete', (req,res) => {
    res.render('delete', {title: 'CRUD', legend: 'Eliminar Registro', label: 'Id', button: 'Eliminar'})
 })
-/*POST select pag*/
+/*POST select pag.*/
 router.post('/select',(req,res) => {
   let id = req.body.id
   db.query(`select * from cliente where id = ${id};`,(err,rows) => {
@@ -28,5 +28,20 @@ router.post('/select',(req,res) => {
     console.log(rows);
     res.render('read', {rows: rows, title: 'CRUD'})
   });
+})
+
+/*POST insert pag.*/
+router.post('/insert', (req,res) => {
+  console.log(req.body.nombre)
+  let nombre = req.body.nombre
+  let apellido = req.body.apellido
+  let telefono = req.body.telefono
+  let correo  = req.body.correo
+  db.query(`insert into cliente (nombre,apellido,telefono,correo) values ('${nombre}','${apellido}', ${telefono}, '${correo}');`,(err, rows) => {
+    if (err) throw err;
+    console.log(rows.insertId)
+    res.redirect('/')
+  })
+  
 })
 module.exports = router;
