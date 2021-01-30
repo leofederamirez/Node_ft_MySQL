@@ -4,10 +4,11 @@
             <table class="table table-striped">
                 <thead class="table-dark">
                     <tr>
-                        <th>Codigo</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Red Social</th>
+                        <th scope="col">Codigo</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Red Social</th>
+                        <th scope="col">Accion</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -16,6 +17,10 @@
                         <td><%- rows[0].nombre%></td>
                         <td><%- rows[0].apellido%></td>
                         <td><%- rows[0].correo%></td>
+                        <td>
+                            <button class="btn btn-warning">Actualizar</button>
+                            <button class="btn btn-danger">Eliminar</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>

@@ -1,12 +1,28 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 offset-2">
-            <form>
+            <form action="/actualizar" method="POST">
                 <fieldset >
                   <legend><%= legend %></legend>
                   <div class="mb-3">
                     <label for="disabledTextInput" class="form-label"><%= label %></label>
-                    <input type="text" id="disabledTextInput" class="form-control" placeholder="Escriba el id...">
+                    <input name="id" type="text" id="disabledTextInput" class="form-control" placeholder="Escriba el id...">
+                  </div>
+                  <div class="mb-3">
+                    <label for="disabledTextInput" class="form-label">Nombre</label>
+                    <input name="nombre" type="text" id="disabledTextInput" class="form-control" placeholder="Escriba el nomber...">
+                  </div>
+                  <div class="mb-3">
+                    <label for="disabledTextInput" class="form-label">Apellido</label>
+                    <input name="apellido" type="text" id="disabledTextInput" class="form-control" placeholder="Escriba el apellido...">
+                  </div>
+                  <div class="mb-3">
+                    <label for="disabledTextInput" class="form-label">Telefono</label>
+                    <input name="telefono" type="text" id="disabledTextInput" class="form-control" placeholder="Escriba el telefono...">
+                  </div>
+                  <div class="mb-3">
+                    <label for="disabledTextInput" class="form-label">Red Social</label>
+                    <input name="correo" type="text" id="disabledTextInput" class="form-control" placeholder="@...">
                   </div>
                   <button type="submit" class="btn btn-primary"><%= button %></button>
                 </fieldset>
