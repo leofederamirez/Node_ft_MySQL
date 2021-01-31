@@ -34,7 +34,8 @@ router.post('/select',(req,res) => {
   db.query(`select * from visitante where id = ${id};`,(err,rows) => {
     if(rows == ''){
       console.log('El Registro no exixte...')
-      res.redirect('/')
+      let messagge = `El Registro ${id} no exixte...`
+      res.send(messagge)
     } 
     console.log(rows);
     res.render('read', {rows: rows, title: 'CRUD'})
@@ -43,7 +44,6 @@ router.post('/select',(req,res) => {
 
 /*POST insert pag.*/
 router.post('/insert', (req,res) => {
-  console.log(req.body.nombre)
   let nombre = req.body.nombre
   let mensaje = req.body.mensaje
   db.query(`insert into visitante (nombre,mensaje) values ('${nombre}','${mensaje}');`,(err, rows) => {
@@ -63,7 +63,7 @@ router.post('/actualizar',(req,res) => {
   let mensaje = req.body.mensaje
   db.query(`UPDATE cliente SET nombre = '${nombre}', apellido = '${mensaje}' where id = ${id};`,(err) => {
     if (err) throw err;
-    console.log('Usuario Actualizado ')
+    console.log('Mensaje Actualizado ')
   });
   res.redirect('/')
 });
