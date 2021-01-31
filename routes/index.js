@@ -5,9 +5,7 @@ var db = require('../db/db')
 /* GET home page. */
 router.get('/', function(req,res) {
   db.query(`SELECT * FROM visitas;`,(err,rows)=> {
-    if(err){
-      res.send(err)
-    };
+    if(err) throw err;
     res.render('index', {title: 'CRUD', rows: rows})
   })
 });
@@ -47,9 +45,7 @@ router.post('/insert', (req,res) => {
   let nombre = req.body.nombre
   let mensaje = req.body.mensaje
   db.query(`insert into visitas (nombre,mensaje) values ('${nombre}','${mensaje}');`,(err, rows) => {
-    if (err) {
-      res.send(err)
-    };
+    if(err) throw err;
     console.log(rows.insertId)
     res.redirect('/')
   });
@@ -62,9 +58,7 @@ router.post('/actualizar',(req,res) => {
   let nombre = req.body.nombre
   let mensaje = req.body.mensaje
   db.query(`UPDATE visitas SET nombre = '${nombre}', mensaje = '${mensaje}' where id = ${id};`,(err) => {
-    if (err) {
-      res.send(`No se puede actualizar el registro numero ${id}.No posee los permisos nesesarios.`)
-    }
+    if (err) throw err;
     console.log('Mensaje Actualizado ')
   });
   res.redirect('/')
