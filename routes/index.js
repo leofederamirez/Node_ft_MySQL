@@ -44,7 +44,9 @@ router.post('/insert', (req,res) => {
   let nombre = req.body.nombre
   let mensaje = req.body.mensaje
   db.query(`insert into visitante (nombre,apellido) values ('${nombre}','${mensaje}');`,(err, rows) => {
-    if (err) throw err;
+    if (err) {
+      res.send(err)
+    };
     console.log(rows.insertId)
     res.redirect('/')
   });
@@ -55,7 +57,7 @@ router.post('/actualizar',(req,res) => {
   console.log(req.body)
   let id = req.body.id;
   let nombre = req.body.nombre
-  let apellido = req.body.mensaje
+  let mensaje = req.body.mensaje
   db.query(`UPDATE cliente SET nombre = '${nombre}', apellido = '${mensaje}' where id = ${id};`,(err) => {
     if (err) throw err;
     console.log('Usuario Actualizado ')
