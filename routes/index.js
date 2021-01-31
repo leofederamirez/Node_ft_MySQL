@@ -46,7 +46,7 @@ router.post('/insert', (req,res) => {
   console.log(req.body.nombre)
   let nombre = req.body.nombre
   let mensaje = req.body.mensaje
-  db.query(`insert into visitante (nombre,apellido) values ('${nombre}','${mensaje}');`,(err, rows) => {
+  db.query(`insert into visitante (nombre,mensaje) values ('${nombre}','${mensaje}');`,(err, rows) => {
     if (err) {
       res.send(err)
     };
