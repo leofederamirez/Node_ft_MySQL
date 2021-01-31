@@ -5,6 +5,9 @@ var db = require('../db/db')
 /* GET home page. */
 router.get('/', function(req,res) {
   db.query(`SELECT * FROM visitante;`,(err,rows)=> {
+    if(err){
+      res.send(err)
+    };
     res.render('index', {title: 'CRUD', rows: rows})
   })
 });
