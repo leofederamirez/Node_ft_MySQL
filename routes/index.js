@@ -61,8 +61,10 @@ router.post('/actualizar',(req,res) => {
   let id = req.body.id;
   let nombre = req.body.nombre
   let mensaje = req.body.mensaje
-  db.query(`UPDATE cliente SET nombre = '${nombre}', apellido = '${mensaje}' where id = ${id};`,(err) => {
-    if (err) throw err;
+  db.query(`UPDATE visitante SET nombre = '${nombre}', mensaje = '${mensaje}' where id = ${id};`,(err) => {
+    if (err) {
+      res.send(`No se puede actualizar el registro numero ${id}.No posee los permisos nesesarios.`)
+    }
     console.log('Mensaje Actualizado ')
   });
   res.redirect('/')
