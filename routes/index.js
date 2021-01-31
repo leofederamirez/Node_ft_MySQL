@@ -4,7 +4,7 @@ var db = require('../db/db')
 
 /* GET home page. */
 router.get('/', function(req,res) {
-  db.query(`SELECT * FROM visita;`,(err,rows)=> {
+  db.query(`SELECT * FROM visitas;`,(err,rows)=> {
     if(err){
       res.send(err)
     };
@@ -31,7 +31,7 @@ router.get('/delete', (req,res) => {
 /*POST select pag.*/
 router.post('/select',(req,res) => {
   let id = req.body.id
-  db.query(`select * from visita where id = ${id};`,(err,rows) => {
+  db.query(`select * from visitas where id = ${id};`,(err,rows) => {
     if(rows == ''){
       console.log('El Registro no exixte...')
       let messagge = `El Registro ${id} no exixte...`
@@ -46,7 +46,7 @@ router.post('/select',(req,res) => {
 router.post('/insert', (req,res) => {
   let nombre = req.body.nombre
   let mensaje = req.body.mensaje
-  db.query(`insert into visita (nombre,mensaje) values ('${nombre}','${mensaje}');`,(err, rows) => {
+  db.query(`insert into visitas (nombre,mensaje) values ('${nombre}','${mensaje}');`,(err, rows) => {
     if (err) {
       res.send(err)
     };
@@ -61,7 +61,7 @@ router.post('/actualizar',(req,res) => {
   let id = req.body.id;
   let nombre = req.body.nombre
   let mensaje = req.body.mensaje
-  db.query(`UPDATE visita SET nombre = '${nombre}', mensaje = '${mensaje}' where id = ${id};`,(err) => {
+  db.query(`UPDATE visitas SET nombre = '${nombre}', mensaje = '${mensaje}' where id = ${id};`,(err) => {
     if (err) {
       res.send(`No se puede actualizar el registro numero ${id}.No posee los permisos nesesarios.`)
     }
